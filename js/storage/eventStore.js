@@ -40,4 +40,21 @@ export async function saveEvent(event) {
     })
 }
 
+export async function getAllEvents() {
+    const db = await openDatabase();
+    
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(EVENT_STORE_NAME, "readonly");
+        const store = transaction.objectStore(EVENT_STORE_NAME);
+        const request = store.getAll();
+
+        request.onsuccess = () => {
+            resolve(request.result);
+        };
+        request.onerror = () => {
+            reject(request.error);
+        };
+    });
+}
+
 export { openDatabase };

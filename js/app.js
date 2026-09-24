@@ -1,4 +1,4 @@
-import { openDatabase, saveEvent } from "./storage/eventStore.js";
+import { openDatabase, saveEvent, getAllEvents } from "./storage/eventStore.js";
 import {
     createDrinkConsumedEvent,
     isValidDrinkConsumedEvent
@@ -7,6 +7,15 @@ import {
 const beer = createDrinkConsumedEvent("beer");
 await saveEvent(beer);
 console.log("Saved event:", beer);
+
+
+const events = await getAllEvents();
+console.log("All stored events:", events);
+
+for (const event of events) {
+    console.log("Event:", event);
+    console.log("Is valid event:", isValidDrinkConsumedEvent(event));
+}
 // console.log("Created event:", beer);
 // console.log("Is valid event:", isValidDrinkConsumedEvent(beer));
 
