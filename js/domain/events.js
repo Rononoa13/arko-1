@@ -17,5 +17,21 @@ export function createDrinkConsumedEvent(category, timestamp = new Date()) {
     };
 }
 
-const beer = createDrinkConsumedEvent("beer");
-console.log(beer);
+export function isValidDrinkConsumedEvent(event) {
+    if (!event || typeof event !== "object") {
+        return false;
+    }
+    if (typeof event.id !== "string" || event.id.length === 0) {
+        return false;
+    }
+    if (event.type !== "drink_consumed") {
+        return false;
+    }
+    if (!DRINK_CATEGORIES.includes(event.category)) {
+        return false;
+    }
+    if (typeof event.timestamp !== "string" || isNaN(Date.parse(event.timestamp))) {
+        return false;
+    }
+    return true;
+}
