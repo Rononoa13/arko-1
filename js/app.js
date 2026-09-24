@@ -1,34 +1,57 @@
-import { saveEvent, getAllEvents } from "./storage/eventStore.js";
-import {
-    createDrinkConsumedEvent,
-    isValidDrinkConsumedEvent
-} from "./domain/events.js";
+import { saveEvent, getAllEvents, clearEvents } from "./storage/eventStore.js";
+import { createDrinkConsumedEvent } from "./domain/events.js";
 import { countDrinks } from "./domain/drinkSummary.js";
 import { renderDrinkCounts } from "./ui/appView.js";
 
 
-const beer = createDrinkConsumedEvent("beer");
-
-await saveEvent(beer);
-
-console.log("Saved event:", beer);
-
-
-const events = await getAllEvents();
-console.log("All stored events:", events);
-
-for (const event of events) {
-    console.log("Event:", event);
-    console.log("Is valid event:", isValidDrinkConsumedEvent(event));
+async function render() {
+    const events = await getAllEvents();
+    const drinkCounts = countDrinks(events);
+    renderDrinkCounts(drinkCounts);
 }
 
-const drinkCounts = countDrinks(events);
-renderDrinkCounts(drinkCounts);
-// console.log("Created event:", beer);
-// console.log("Is valid event:", isValidDrinkConsumedEvent(beer));
+const addBeerButton = document.getElementById("add-beer");
+addBeerButton.addEventListener("click", async () => {
+    const beerEvent = createDrinkConsumedEvent("beer");
+    await saveEvent(beerEvent);
+    await render();
+});
 
-// const db = await openDatabase();
+// Delete events inside the event object store from IndexedDB
+const resetEventsButton = document.getElementById("reset-session");
+resetEventsButton.addEventListener("click", async () => {
+    const confirmReset = confirm("Are you sure you want to reset the session? This will delete recorded drinks.");
+    if (!confirmReset) {
+        return;
+    }
+    await clearEvents();
+    await render();
+});
 
-// console.log("Database opened:", db.name);
-// console.log("Version:", db.version);
-// console.log("Stores:", [...db.objectStoreNames]);
+await render(); // Initial render on page load
+
+// const beer = createDrinkConsumedEvent("beer");
+
+// await saveEvent(beer);
+
+// console.log("Saved event:", beer);
+
+
+// const events = await getAllEvents();
+// console.log("All stored events:", events);
+
+// for (const event of events) {
+//     console.log("Event:", event);
+//     console.log("Is valid event:", isValidDrinkConsumedEvent(event));
+// }
+
+// const drinkCounts = countDrinks(events);
+// renderDrinkCounts(drinkCounts);
+// // console.log("Created event:", beer);
+// // console.log("Is valid event:", isValidDrinkConsumedEvent(beer));
+
+// // const db = await openDatabase();
+
+// // console.log("Database opened:", db.name);
+// // console.log("Version:", db.version);
+// // console.log("Stores:", [...db.objectStoreNames]);

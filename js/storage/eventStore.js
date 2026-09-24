@@ -57,4 +57,21 @@ export async function getAllEvents() {
     });
 }
 
+export async function clearEvents() {
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(EVENT_STORE_NAME, "readwrite");
+        const store = transaction.objectStore(EVENT_STORE_NAME);
+        const request = store.clear();
+
+        request.onsuccess = () => {
+            resolve();
+        };
+        request.onerror = () => {
+            reject(request.error);
+        };
+    });
+}
+
 export { openDatabase };
