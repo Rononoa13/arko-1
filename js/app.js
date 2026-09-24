@@ -1,19 +1,17 @@
+import { openDatabase, saveEvent } from "./storage/eventStore.js";
 import {
     createDrinkConsumedEvent,
     isValidDrinkConsumedEvent
 } from "./domain/events.js";
 
 const beer = createDrinkConsumedEvent("beer");
+await saveEvent(beer);
+console.log("Saved event:", beer);
+// console.log("Created event:", beer);
+// console.log("Is valid event:", isValidDrinkConsumedEvent(beer));
 
-console.log("Created event:", beer);
-console.log("Is valid event:", isValidDrinkConsumedEvent(beer));
+// const db = await openDatabase();
 
-
-// const garbageEvent = {
-//     id: "123",
-//     type: "drink_consumed",
-//     category: "banana",
-//     timestamp: "yesterday"
-// };
-
-// console.log(isValidDrinkConsumedEvent(garbageEvent));
+// console.log("Database opened:", db.name);
+// console.log("Version:", db.version);
+// console.log("Stores:", [...db.objectStoreNames]);
