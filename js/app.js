@@ -1,11 +1,16 @@
-import { openDatabase, saveEvent, getAllEvents } from "./storage/eventStore.js";
+import { saveEvent, getAllEvents } from "./storage/eventStore.js";
 import {
     createDrinkConsumedEvent,
     isValidDrinkConsumedEvent
 } from "./domain/events.js";
+import { countDrinks } from "./domain/drinkSummary.js";
+import { renderDrinkCounts } from "./ui/appView.js";
+
 
 const beer = createDrinkConsumedEvent("beer");
+
 await saveEvent(beer);
+
 console.log("Saved event:", beer);
 
 
@@ -16,6 +21,9 @@ for (const event of events) {
     console.log("Event:", event);
     console.log("Is valid event:", isValidDrinkConsumedEvent(event));
 }
+
+const drinkCounts = countDrinks(events);
+renderDrinkCounts(drinkCounts);
 // console.log("Created event:", beer);
 // console.log("Is valid event:", isValidDrinkConsumedEvent(beer));
 
