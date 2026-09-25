@@ -32,19 +32,21 @@ h1 {
 }
 
 #drink-actions {
+    margin-top: 8vh;
+
     display: flex;
     justify-content: center;
 }
 
 .drink-button {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
+    font-size: 3.5rem;
 
     border: none;
     border-radius: 50%;
 
     background: #f5f5f5;
-    font-size: 4rem;
 
     cursor: pointer;
 
@@ -55,6 +57,7 @@ h1 {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 
     -webkit-tap-highlight-color: transparent;
+
     touch-action: manipulation;
 }
 
@@ -65,16 +68,20 @@ h1 {
 #session-actions {
     margin-top: auto;
     padding-top: 3rem;
+    padding-bottom: 2rem;
 }
 
 #reset-session {
     border: none;
     background: transparent;
-    color: #888;
-
+    color: #bbb;
     font-size: 0.9rem;
-
     padding: 0.75rem 1rem;
-
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#reset-session:hover,
+#reset-session:focus-visible {
+    color: #fff;
 }

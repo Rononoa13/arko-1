@@ -5,7 +5,9 @@ export function renderDrinkCounts(drinkCounts) {
 
     for (const [category, count] of Object.entries(drinkCounts)) {
         const countElement = document.createElement("div");
-        countElement.textContent = `${category}: ${count}`;
+        const displayName = category === "beer" ? "🍺" : category;
+
+        countElement.textContent = `${displayName} : ${count}`;
         drinkCountsContainer.appendChild(countElement);
     }
 }
