@@ -95,4 +95,25 @@ export async function saveGroup(group) {
     })
 }
 
+export async function getExistingGroup() {
+    const db = await openDatabase();
+    
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(GROUP_STORE_NAME, "readonly");
+        const store = transaction.objectStore(GROUP_STORE_NAME);
+        const request = store.getAll();
+
+        request.onsuccess = () => {
+        if (request.result.length > 0) {
+            resolve(request.result[0]); // Because only 1 group
+        } else {
+            resolve(null);
+            }
+        };
+        request.onerror = () => {
+            reject(request.error);
+        };
+    });
+}
+
 export { openDatabase };

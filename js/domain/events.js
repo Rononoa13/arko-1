@@ -45,3 +45,12 @@ export function createGroup(groupName) {
         members: []
     };
 }
+
+export function addMemberToGroup(group, memberName) {
+    const member = {
+        id: crypto.randomUUID(),
+        name: memberName
+    };
+    group.members.push(member)
+    return group
+}
