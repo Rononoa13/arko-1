@@ -1,4 +1,4 @@
-const CACHE_NAME = "arko-1-v1";
+const CACHE_NAME = "arko-1-v2";
 
 const APP_ASSETS = [
     "/",
@@ -10,7 +10,10 @@ const APP_ASSETS = [
     "/js/domain/events.js",
     "/js/domain/drinkSummary.js",
     "/js/ui/appView.js",
-    "/manifest.json"
+
+    "/manifest.json",
+    "/icons/icon-192.png",
+    "/icons/icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
