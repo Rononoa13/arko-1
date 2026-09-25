@@ -1,6 +1,6 @@
 import { saveEvent, getAllEvents, clearEvents } from "./storage/eventStore.js";
 import { createDrinkConsumedEvent } from "./domain/events.js";
-import { countDrinks } from "./domain/drinkSummary.js";
+import { countDrinks, getBeersSinceLastWater } from "./domain/drinkSummary.js";
 import { renderDrinkCounts } from "./ui/appView.js";
 
 
@@ -30,6 +30,38 @@ resetEventsButton.addEventListener("click", async () => {
 
 await render(); // Initial render on page load
 
+// iOS PWA install prompt
+const iosInstallPrompt = document.querySelector("#install-ios");
+const dismissIosInstall = document.querySelector("#dismiss-ios-install");
+
+if (iosInstallPrompt && dismissIosInstall) {
+    const isIOS =
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    const isStandalone =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone === true;
+
+    const hasDismissedInstall =
+        localStorage.getItem("ios-install-dismissed") === "true";
+
+    if (isIOS && !isStandalone && !hasDismissedInstall) {
+        iosInstallPrompt.hidden = false;
+    }
+
+    dismissIosInstall.addEventListener("click", () => {
+        iosInstallPrompt.hidden = true;
+        localStorage.setItem("ios-install-dismissed", "true");
+    });
+
+}
+
+
+let waterEvents = await getAllEvents();
+console.log("Beers since last water:", getBeersSinceLastWater(waterEvents));
+
+// 
 // const beer = createDrinkConsumedEvent("beer");
 
 // await saveEvent(beer);

@@ -97,3 +97,45 @@ button {
 #reset-session:focus-visible {
     color: #fff;
 }
+
+/* CSS for PWA installation */
+.install-prompt {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+
+    background: #222;
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.install-prompt-content strong {
+    font-size: 1rem;
+}
+
+.install-prompt p {
+    margin: 0.6rem 0 0.75rem;
+
+    color: #bbb;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.share-icon {
+    display: inline-block;
+    margin: 0 0.2rem;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+#dismiss-ios-install {
+    border: none;
+    background: transparent;
+
+    color: #aaa;
+    font-size: 0.85rem;
+
+    padding: 0.5rem 0.75rem;
+}
