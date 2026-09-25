@@ -18,6 +18,11 @@ body {
         env(safe-area-inset-bottom)
         env(safe-area-inset-left);
 
+    font-family: system-ui, sans-serif;
+
+    background: #111;
+    color: #fff;
+
     overscroll-behavior-y: none;
 
     -webkit-tap-highlight-color: transparent;
