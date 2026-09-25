@@ -1,0 +1,9 @@
+{
+    "name": "Arko 1",
+    "short_name": "Arko 1",
+    "description": "A simple local drink counter",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#111111",
+    "theme_color": "#111111"
+}
