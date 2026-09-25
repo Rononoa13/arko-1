@@ -35,3 +35,13 @@ export function isValidDrinkConsumedEvent(event) {
     }
     return true;
 }
+
+// Group Domain
+export function createGroup(groupName) {
+
+    return {
+        id: crypto.randomUUID(),
+        name: groupName,
+        members: []
+    };
+}

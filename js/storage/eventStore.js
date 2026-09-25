@@ -77,5 +77,22 @@ export async function clearEvents() {
         };
     });
 }
+// Group Object Creation
+export async function saveGroup(group) {
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(GROUP_STORE_NAME, "readwrite");
+        const store = transaction.objectStore(GROUP_STORE_NAME);
+        const request = store.add(group);
+
+        request.onsuccess = () => {
+            resolve(group);
+        };
+        request.onerror = () => {
+            reject(request.error);
+        };
+    })
+}
 
 export { openDatabase };
