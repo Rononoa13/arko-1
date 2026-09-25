@@ -5,6 +5,11 @@ const APP_ASSETS = [
     "/index.html",
     "/css/app.css",
     "/js/app.js",
+
+    "/js/storage/eventStore.js",
+    "/js/domain/events.js",
+    "/js/domain/drinkSummary.js",
+    "/js/ui/appView.js",
     "/manifest.json"
 ];
 
