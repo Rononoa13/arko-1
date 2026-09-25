@@ -1,6 +1,6 @@
 import { saveEvent, getAllEvents, clearEvents } from "./storage/eventStore.js";
 import { createDrinkConsumedEvent } from "./domain/events.js";
-import { countDrinks, getBeersSinceLastWater } from "./domain/drinkSummary.js";
+import { countDrinks } from "./domain/drinkSummary.js";
 import { renderDrinkCounts } from "./ui/appView.js";
 
 
@@ -58,8 +58,8 @@ if (iosInstallPrompt && dismissIosInstall) {
 }
 
 
-let waterEvents = await getAllEvents();
-console.log("Beers since last water:", getBeersSinceLastWater(waterEvents));
+// let waterEvents = await getAllEvents();
+// console.log("Beers since last water:", getBeersSinceLastWater(waterEvents));
 
 // 
 // const beer = createDrinkConsumedEvent("beer");
