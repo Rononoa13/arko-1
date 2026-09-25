@@ -15,6 +15,11 @@ addBeerButton.addEventListener("click", async () => {
     const beerEvent = createDrinkConsumedEvent("beer");
     await saveEvent(beerEvent);
     await render();
+    
+    addBeerButton.classList.remove("tap");
+    // Force animation restart
+    void addBeerButton.offsetWidth;
+    addBeerButton.classList.add("tap");
 });
 
 // Delete events inside the event object store from IndexedDB

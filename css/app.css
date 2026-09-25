@@ -79,8 +79,20 @@ button {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.drink-button:active {
-    transform: scale(0.94);
+.drink-button.tap {
+    animation: beer-tap 160ms ease-out;
+}
+
+@keyframes beer-tap {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 #session-actions {
