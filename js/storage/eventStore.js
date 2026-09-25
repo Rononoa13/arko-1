@@ -1,6 +1,7 @@
 const DB_NAME = "drink-counter";
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const EVENT_STORE_NAME = "events";
+const GROUP_STORE_NAME = "groups";
 
 
 function openDatabase() {
@@ -12,6 +13,9 @@ function openDatabase() {
 
             if (!db.objectStoreNames.contains(EVENT_STORE_NAME)) {
                 db.createObjectStore(EVENT_STORE_NAME, { keyPath: "id" });
+            }
+            if (!db.objectStoreNames.contains(GROUP_STORE_NAME)) {
+                db.createObjectStore(GROUP_STORE_NAME, { keyPath: "id" });
             }
         };
         request.onsuccess = () => {
