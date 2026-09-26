@@ -73,6 +73,35 @@ startGroupButton.addEventListener("click", async () => {
         return;
     }
     console.log("No group exists. Create one.");
+    const groupForm = document.getElementById("group-form");
+    groupForm.hidden = false;
+
+    const createGroupForm = document.getElementById("create-group-form")
+    createGroupForm.addEventListener("submit", async (event) => {
+        console.log("SUBMIT HANDLER FIRED");
+        event.preventDefault()
+        // Get values from 2 inputs:
+        // Create a FormData instance from the form element and value from "name" attribute
+        const formData = new FormData(event.target);
+        const groupName = formData.get("groupName")
+        const memberName = formData.get("memberName")
+
+        const group = createGroup(groupName)
+        addMemberToGroup(group, memberName);
+        // const updatedGroup = addMemberToGroup(group, memberName);
+        await saveGroup(group);
+        startGroup(group);
+        window.location.href = "/groups.html";
+        console.log("Group ID:", group.id);
+        console.log("Starting group:", group.name);
+        console.log("Members:", group.members);
+        console.log("Group name:", group.name);
+        console.log("Member count:", group.members.length);
+        console.log(
+            "Members:",
+            group.members.map(member => member.name)
+        );
+    })
 })
 // const group = await getExistingGroup();
 

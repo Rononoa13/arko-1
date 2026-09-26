@@ -46,7 +46,36 @@
         <section id="session-actions">
             <button id="create-a-group">Create a Group</button>
         </section>
-        
+
+        <section id="group-form" hidden>
+            <h2>Start a Group</h2>
+
+            <form id="create-group-form">
+                <label for="group-name">Group name</label>
+                <input
+                    id="group-name"
+                    name="groupName"
+                    type="text"
+                    required
+                >
+
+                <label for="member-name">Your name</label>
+                <input
+                    id="member-name"
+                    name="memberName"
+                    type="text"
+                    required
+                >
+
+                <button type="submit">Start</button>
+            </form>
+        </section>
+
+        <section id="group-view" hidden>
+            <h2 id="group-name-display"></h2>
+            <div id="group-members"></div>
+        </section>
+
         <section id="session-actions">
             <button id="reset-session">Reset session</button>
         </section>

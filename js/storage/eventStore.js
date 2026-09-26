@@ -84,7 +84,7 @@ export async function saveGroup(group) {
     return new Promise((resolve, reject) => {
         const transaction = db.transaction(GROUP_STORE_NAME, "readwrite");
         const store = transaction.objectStore(GROUP_STORE_NAME);
-        const request = store.add(group);
+        const request = store.put(group);
 
         request.onsuccess = () => {
             resolve(group);
@@ -123,6 +123,25 @@ export async function clearGroups() {
         const transaction = db.transaction(GROUP_STORE_NAME, "readwrite");
         const store = transaction.objectStore(GROUP_STORE_NAME);
         const request = store.clear();
+
+        request.onsuccess = () => {
+            resolve();
+        };
+
+        request.onerror = () => {
+            reject(request.error);
+        };
+    });
+}
+
+
+export async function deleteGroup(groupId) {
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(GROUP_STORE_NAME, "readwrite");
+        const store = transaction.objectStore(GROUP_STORE_NAME);
+        const request = store.delete(groupId);
 
         request.onsuccess = () => {
             resolve();
