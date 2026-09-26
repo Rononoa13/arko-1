@@ -68,17 +68,21 @@ startGroupButton.addEventListener("click", async () => {
     // await clearGroups();
     const existingGroup = await getExistingGroup();
     if (existingGroup) {
-        // console.log("existingGroup: ", existingGroup)
         startGroup(existingGroup)
         return;
     }
-    console.log("No group exists. Create one.");
+    
     const groupForm = document.getElementById("group-form");
     groupForm.hidden = false;
+    
+    groupForm.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    })
 
     const createGroupForm = document.getElementById("create-group-form")
     createGroupForm.addEventListener("submit", async (event) => {
-        console.log("SUBMIT HANDLER FIRED");
+        
         event.preventDefault()
         // Get values from 2 inputs:
         // Create a FormData instance from the form element and value from "name" attribute
@@ -92,65 +96,5 @@ startGroupButton.addEventListener("click", async () => {
         await saveGroup(group);
         startGroup(group);
         window.location.href = "/groups.html";
-        console.log("Group ID:", group.id);
-        console.log("Starting group:", group.name);
-        console.log("Members:", group.members);
-        console.log("Group name:", group.name);
-        console.log("Member count:", group.members.length);
-        console.log(
-            "Members:",
-            group.members.map(member => member.name)
-        );
     })
 })
-// const group = await getExistingGroup();
-
-// console.log(group);
-
-// const group1 = createGroup("Sat Crew");
-
-// console.log(group1);
-// await clearGroups();
-// const group = createGroup("Sat Crew");
-
-// addMemberToGroup(group, "Sumit");
-// addMemberToGroup(group, "Alex");
-
-
-// await saveGroup(group);
-
-// const loadedGroup = await getExistingGroup();
-
-// console.log("Original:", group);
-// console.log("Loaded:", loadedGroup);
-// console.log("Same ID:", group.id === loadedGroup.id);
-
-// let waterEvents = await getAllEvents();
-// console.log("Beers since last water:", getBeersSinceLastWater(waterEvents));
-
-// 
-// const beer = createDrinkConsumedEvent("beer");
-
-// await saveEvent(beer);
-
-// console.log("Saved event:", beer);
-
-
-// const events = await getAllEvents();
-// console.log("All stored events:", events);
-
-// for (const event of events) {
-//     console.log("Event:", event);
-//     console.log("Is valid event:", isValidDrinkConsumedEvent(event));
-// }
-
-// const drinkCounts = countDrinks(events);
-// renderDrinkCounts(drinkCounts);
-// // console.log("Created event:", beer);
-// // console.log("Is valid event:", isValidDrinkConsumedEvent(beer));
-
-// // const db = await openDatabase();
-
-// // console.log("Database opened:", db.name);
-// // console.log("Version:", db.version);
-// // console.log("Stores:", [...db.objectStoreNames]);
