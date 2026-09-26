@@ -23,18 +23,20 @@ render group
         <section id="group-members">
         </section>
 
-        <button id="add-member">Add Member</button>
-        <section id="group-member-form" hidden>
+        <section id="group-member-form">
             <form id="add-member-form">
-                
                 <label for="member-name">Member name</label>
-                <input
-                    id="member-name"
-                    name="memberName"
-                    type="text"
-                    required
-                >
-                <button type="submit">Add</button>
+
+                <div class="member-input">
+                    <input
+                        id="member-name"
+                        name="memberName"
+                        type="text"
+                        required
+                    >
+
+                    <button type="submit">Add</button>
+                </div>
             </form>
         </section>
 

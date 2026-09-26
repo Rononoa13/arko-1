@@ -1,6 +1,6 @@
-import { getExistingGroup, saveGroup } from "./storage/eventStore.js";
+import { getExistingGroup, saveGroup, deleteGroup } from "./storage/eventStore.js";
 import { addMemberToGroup } from "./domain/events.js";
-import { deleteGroup } from "./storage/eventStore.js"
+
 
 const group = await getExistingGroup();
 
@@ -29,13 +29,6 @@ function renderMemberName() {
 renderGroupName();
 renderMemberName();
 
-// Application flow when adding a member !
-const addMember = document.getElementById("add-member")
-addMember.addEventListener("click", () => {
-    const memberForm = document.getElementById("group-member-form");
-    memberForm.hidden = false;
-    addMember.hidden = true;
-})
 // submit handler when adding a member
 const addMemberForm = document.getElementById("add-member-form");
 
@@ -63,7 +56,6 @@ removeGroup.addEventListener("click", async () => {
     if (!confirmed) {
         return;
     }
-    console.log(deleteGroup(group.id))
     await deleteGroup(group.id);
     window.location.href = "/index.html";
 });
