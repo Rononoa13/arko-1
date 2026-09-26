@@ -7,6 +7,7 @@ import { renderDrinkCounts } from "./ui/appView.js";
 async function render() {
     const events = await getAllEvents();
     const drinkCounts = countDrinks(events);
+    console.log("drinkCounts:", drinkCounts);
     renderDrinkCounts(drinkCounts);
 }
 
