@@ -6,7 +6,7 @@ const group = await getExistingGroup();
 
 function renderGroupName() {
     const groupName = document.getElementById("group-name")
-    groupName.innerText = group.name
+    groupName.innerText =`GROUP: ${group.name}`
 
 }
 
@@ -19,15 +19,25 @@ function renderMemberName() {
     for (const member of group.members) {
         // memberName.innerText = member.name
         const li = document.createElement("li");
-        li.innerText = member.name
+        li.innerText = `👤 ${member.name}  🍺 0`
         
         ul.appendChild(li)  
     }
     memberList.appendChild(ul)
 }
 
+function renderGroupTotal() {
+    const groupTotal = document.getElementById("group-total")
+
+    groupTotal.innerHTML = `
+        <div class="group-divider"></div>
+        <div class="group-total-count">Total  🍺 0</div>
+    `
+}
+
 renderGroupName();
 renderMemberName();
+renderGroupTotal();
 
 // submit handler when adding a member
 const addMemberForm = document.getElementById("add-member-form");
