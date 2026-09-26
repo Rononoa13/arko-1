@@ -31,6 +31,7 @@ resetEventsButton.addEventListener("click", async () => {
         return;
     }
     await clearEvents();
+    document.getElementById("group-form").style.display = "none";
     await render();
 });
 

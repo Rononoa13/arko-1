@@ -99,7 +99,6 @@ addMemberForm.addEventListener("submit", async (event) => {
 })
 
 const removeGroup = document.getElementById("remove-group")
-
 removeGroup.addEventListener("click", async () => {
     const confirmed = window.confirm(
         "Delete this group? This cannot be undone."
