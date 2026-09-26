@@ -157,6 +157,31 @@ button {
     padding: 0.5rem 0.75rem;
 }
 
+#reset-session {
+    width: 100%;
+    padding: 0.75rem 1rem;
+
+    border: 1px solid #555;
+    border-radius: 10px;
+
+    background: transparent;
+    color: #aaa;
+
+    font: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
+}
+
+#reset-session:hover {
+    background: #222;
+    color: #fff;
+}
+
 /* Group */
 #session-actions {
     display: flex;
