@@ -54,3 +54,11 @@ export function addMemberToGroup(group, memberName) {
     group.members.push(member)
     return group
 }
+
+export function startGroup(group) {
+    console.log("Starting group:", group.name);
+    console.log("Members:", group.members);
+    for (const member of group.members) {
+        console.log("Member:", member.name)
+    }
+}

@@ -1,5 +1,5 @@
-import { saveEvent, getAllEvents, clearEvents } from "./storage/eventStore.js";
-import { createDrinkConsumedEvent } from "./domain/events.js";
+import { saveEvent, getAllEvents, clearEvents, getExistingGroup, saveGroup, clearGroups } from "./storage/eventStore.js";
+import { createDrinkConsumedEvent, createGroup, addMemberToGroup, startGroup } from "./domain/events.js";
 import { countDrinks } from "./domain/drinkSummary.js";
 import { renderDrinkCounts } from "./ui/appView.js";
 
@@ -62,6 +62,39 @@ if (iosInstallPrompt && dismissIosInstall) {
 
 }
 
+// Application flow when creating a group !
+const startGroupButton = document.getElementById("create-a-group");
+startGroupButton.addEventListener("click", async () => {
+    // await clearGroups();
+    const existingGroup = await getExistingGroup();
+    if (existingGroup) {
+        // console.log("existingGroup: ", existingGroup)
+        startGroup(existingGroup)
+        return;
+    }
+    console.log("No group exists. Create one.");
+})
+// const group = await getExistingGroup();
+
+// console.log(group);
+
+// const group1 = createGroup("Sat Crew");
+
+// console.log(group1);
+// await clearGroups();
+// const group = createGroup("Sat Crew");
+
+// addMemberToGroup(group, "Sumit");
+// addMemberToGroup(group, "Alex");
+
+
+// await saveGroup(group);
+
+// const loadedGroup = await getExistingGroup();
+
+// console.log("Original:", group);
+// console.log("Loaded:", loadedGroup);
+// console.log("Same ID:", group.id === loadedGroup.id);
 
 // let waterEvents = await getAllEvents();
 // console.log("Beers since last water:", getBeersSinceLastWater(waterEvents));
