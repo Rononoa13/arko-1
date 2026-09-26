@@ -15,15 +15,23 @@ function renderMemberName() {
     memberList.innerHTML = "";
 
     const ul = document.createElement("ul")
-    
+
     for (const member of group.members) {
-        // memberName.innerText = member.name
         const li = document.createElement("li");
-        li.innerText = `👤 ${member.name}  🍺 0`
-        
-        ul.appendChild(li)  
+
+        const memberName = document.createElement("span");
+        memberName.innerText = `👤 ${member.name}`;
+
+        const memberCount = document.createElement("span");
+        memberCount.innerText = "🍺 0";
+
+        li.appendChild(memberName);
+        li.appendChild(memberCount);
+
+        ul.appendChild(li);
     }
-    memberList.appendChild(ul)
+
+    memberList.appendChild(ul);
 }
 
 function renderGroupTotal() {
@@ -31,7 +39,10 @@ function renderGroupTotal() {
 
     groupTotal.innerHTML = `
         <div class="group-divider"></div>
-        <div class="group-total-count">Total  🍺 0</div>
+        <div class="group-total-count">
+            <span>Total</span>
+            <span>🍺 0</span>
+        </div>
     `
 }
 

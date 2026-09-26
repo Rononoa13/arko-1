@@ -10,6 +10,8 @@
     font-size: 2rem;
 }
 
+/* Group members */
+
 #group-members {
     margin-bottom: 1.5rem;
 }
@@ -26,13 +28,35 @@
 }
 
 #group-members li {
-    padding: 1rem;
-    border: 1px solid #333;
-    border-radius: 12px;
-    background: #181818;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+}
 
-    font-size: 1.1rem;
-    font-weight: 600;
+/* Group total */
+
+#group-total {
+    width: 40%;
+    margin-top: 12px;
+}
+
+.group-divider {
+    border-top: 1px solid #ccc;
+    margin-bottom: 12px;
+}
+
+.group-total-count {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0.5rem 0;
+
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 /* Add member */
@@ -102,20 +126,7 @@
 #add-member-form button:active {
     transform: scale(0.98);
 }
-/* Group List */
-#group-total {
-    margin-top: 12px;
-}
 
-.group-divider {
-    border-top: 1px solid #ccc;
-    margin-bottom: 12px;
-}
-
-.group-total-count {
-    padding: 0 8px;
-    font-weight: 600;
-}
 /* Delete group */
 
 #delete-session {
