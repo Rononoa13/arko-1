@@ -94,7 +94,6 @@ startGroupButton.addEventListener("click", async () => {
         addMemberToGroup(group, memberName);
         // const updatedGroup = addMemberToGroup(group, memberName);
         await saveGroup(group);
-        startGroup(group);
         window.location.href = "/groups.html";
     })
 })

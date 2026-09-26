@@ -57,5 +57,5 @@ removeGroup.addEventListener("click", async () => {
         return;
     }
     await deleteGroup(group.id);
-    window.location.href = "/index.html";
+    window.location.replace("/");
 });
