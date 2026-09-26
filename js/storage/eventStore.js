@@ -116,4 +116,22 @@ export async function getExistingGroup() {
     });
 }
 
+export async function clearGroups() {
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(GROUP_STORE_NAME, "readwrite");
+        const store = transaction.objectStore(GROUP_STORE_NAME);
+        const request = store.clear();
+
+        request.onsuccess = () => {
+            resolve();
+        };
+
+        request.onerror = () => {
+            reject(request.error);
+        };
+    });
+}
+
 export { openDatabase };
