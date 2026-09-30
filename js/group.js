@@ -39,7 +39,7 @@ async function renderMemberName() {
         });
 
         const memberName = document.createElement("span");
-        memberName.innerText = `👤 ${member.name}`;
+        memberName.innerText = `👤  ${member.name}`;
 
         const memberCount = document.createElement("span");
         const count = getMemberBeerCount(
@@ -119,3 +119,6 @@ function getMemberBeerCount(events, groupId, memberId) {
         event.memberId === memberId
     ).length;
 }
+
+
+export { renderGroupName, renderMemberName, renderGroupTotal }

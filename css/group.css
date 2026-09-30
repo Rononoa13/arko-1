@@ -36,11 +36,25 @@
     justify-content: space-between;
     align-items: center;
 
-    gap: 3rem;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
 
-    padding: 0.5rem 0;
+    /* border: 1px solid #ccc; */
+    border-radius: 0.75rem;
+
+    cursor: pointer;
+    user-select: none;
 
     font-size: 1.2rem;
+}
+
+
+#group-members li:hover {
+    background-color: #213b7d;
+}
+
+#group-members li:active {
+    transform: scale(0.98);
 }
 
 
@@ -135,6 +149,25 @@
 
 #add-member-form button:active {
     transform: scale(0.98);
+}
+/* Play Game */
+
+#play-game {
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 1rem;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    border-radius: 0.75rem;
+    cursor: pointer;
+}
+
+#play-game:hover {
+    background: #222;
+    color: #fff;
 }
 
 /* Delete group */
