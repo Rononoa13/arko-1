@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Beer Counter</title>
+    <meta name="description" content="Arko 1 is a one-phone party game and drink counter. Keep track of drinks and have fun with friends!">
+
+    <title>Arko 1 — One-Phone Party Games & Drink Counter</title>
+    
     <link rel="manifest" href="/manifest.json">
+    <link rel="canonical" href="https://arko1.com/">
     <link rel="icon" type="image/png" href="/icons/icon-192.png">
     <link rel="apple-touch-icon" href="/icons/icon-192.png">
     <link rel="stylesheet" href="/css/app.css">
@@ -29,7 +33,13 @@
             </div>
         </section>
 
-        <h1>अर्को १</h1>
+        <h1>
+            <span aria-hidden="true">अर्को १</span>
+            <span class="sr-only">Arko 1 — One-Phone Party Games</span>
+        </h1>
+        <p class="product-description">
+            A one-phone party experience for tracking drinks and playing games together.
+        </p>
         <section id="drink-counts"></section>
         <section id="drink-actions">
             <button
@@ -44,7 +54,7 @@
 
         <!-- Create a group -->
         <section id="session-actions">
-            <button id="create-a-group">Create a Group</button>
+            <button id="create-a-group" type="button">Create a Group</button>
         </section>
 
         <section id="group-form" hidden>

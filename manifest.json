@@ -1,7 +1,7 @@
 {
     "name": "Arko 1",
     "short_name": "Arko 1",
-    "description": "A simple local drink counter",
+    "description": "A one-phone party experience for tracking drinks and playing games together.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#111111",
