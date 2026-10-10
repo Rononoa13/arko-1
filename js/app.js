@@ -31,7 +31,7 @@ resetEventsButton.addEventListener("click", async () => {
         return;
     }
     await clearEvents();
-    document.getElementById("group-form").style.display = "none";
+    document.getElementById("group-form").hidden = true; // Hide the group form when resetting events
     await render();
 });
 

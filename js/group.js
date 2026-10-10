@@ -50,8 +50,13 @@ async function renderMemberName() {
 
         memberCount.innerText = `🍺 ${count}`;
 
+        // const addDrink = document.createElement("span");
+        // addDrink.innerText = "+1";
+        // addDrink.classList.add("add-drink");
+
         li.appendChild(memberName);
         li.appendChild(memberCount);
+        // li.appendChild(addDrink);
 
         ul.appendChild(li);
     }
