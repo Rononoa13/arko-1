@@ -45,6 +45,14 @@ main {
 h1 {
     margin: 0 0 2rem;
 }
+/* .sr-only {
+    
+} */
+.product-description {
+    margin: 0 0 2rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
 
 #drink-counts {
     font-size: 2rem;
@@ -95,7 +103,7 @@ button {
     }
 }
 
-#session-actions {
+#session-reset-actions {
     margin-top: auto;
     padding-top: 3rem;
     padding-bottom: 2rem;
@@ -183,7 +191,7 @@ button {
 }
 
 /* Group */
-#session-actions {
+#group-actions {
     display: flex;
     justify-content: center;
     margin-top: 2rem;

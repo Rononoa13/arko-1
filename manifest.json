@@ -1,8 +1,12 @@
 {
+    "id": "/",
     "name": "Arko 1",
     "short_name": "Arko 1",
     "description": "A one-phone party experience for tracking drinks and playing games together.",
+    "lang": "en",
+    "dir": "ltr",
     "start_url": "/",
+    "scope": "/",
     "display": "standalone",
     "background_color": "#111111",
     "theme_color": "#111111",
@@ -16,6 +20,12 @@
             "src": "/icons/icon-512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512-maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ]
 }

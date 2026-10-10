@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://arko1.com/sitemap.xml

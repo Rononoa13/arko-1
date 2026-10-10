@@ -3,14 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Arko 1 is a one-phone party game and drink counter. Keep track of drinks and have fun with friends!">
+     <meta name="theme-color" content="#111111">
+    <meta name="description" content="Arko 1 is a one-phone party game and drink counter. Keep track of drinks, create a group, play together and have fun with friends without accounts.">
 
     <title>Arko 1 — One-Phone Party Games & Drink Counter</title>
     
+    <!-- PWA -->
     <link rel="manifest" href="/manifest.json">
     <link rel="canonical" href="https://arko1.com/">
+
+    <!-- Icons -->
     <link rel="icon" type="image/png" href="/icons/icon-192.png">
     <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+        <!-- Open Graph -->
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Arko 1 — One-Phone Party Games & Drink Counter">
+    <meta
+        property="og:description"
+        content="A one-phone party experience for groups. Track drinks and play together without accounts."
+    >
+    <meta property="og:url" content="https://arko1.com/">
+    <meta property="og:image" content="https://arko1.com/icons/og-image.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arko 1 — One-Phone Party Games & Drink Counter">
+    <meta
+        name="twitter:description"
+        content="A one-phone party experience for groups. Track drinks and play together without accounts."
+    >
+    <meta name="twitter:image" content="https://arko1.com/icons/og-image.png">
+    <!-- And I’d create a proper og-image.png rather than using your app icon. That’s useful when someone shares Arko on Discord, WhatsApp, Slack, Facebook, etc. -->
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
@@ -35,11 +60,14 @@
 
         <h1>
             <span aria-hidden="true">अर्को १</span>
-            <span class="sr-only">Arko 1 — One-Phone Party Games</span>
+            <span class="sr-only"> — One-Phone Party Games</span>
         </h1>
         <p class="product-description">
             A one-phone party experience for tracking drinks and playing games together.
         </p>
+        <br>
+        <br>
+
         <section id="drink-counts"></section>
         <section id="drink-actions">
             <button
@@ -53,7 +81,7 @@
         </section>
 
         <!-- Create a group -->
-        <section id="session-actions">
+        <section id="group-actions">
             <button id="create-a-group" type="button">Create a Group</button>
         </section>
 
@@ -81,7 +109,7 @@
             </form>
         </section>
 
-        <section id="session-actions">
+        <section id="session-reset-actions">
             <button id="reset-session">Reset session</button>
         </section>
 
@@ -94,5 +122,19 @@
             navigator.serviceWorker.register("/service-worker.js");
         }
     </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Arko 1",
+        "url": "https://arko1.com/",
+        "description": "A one-phone party experience for groups, with a drink counter and party games.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web",
+        "browserRequirements": "Requires JavaScript",
+        "isAccessibleForFree": true
+    }
+</script>
 </body>
 </html>
