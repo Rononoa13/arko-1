@@ -43,14 +43,17 @@ main {
 }
 
 h1 {
-    margin: 0 0 2rem;
+    margin: 0 0 1rem;
+
+    text-align: center;
+    font-size: clamp(2rem, 7vw, 3rem);
+    line-height: 1.2;
+    font-weight: 400px;
 }
-/* .sr-only {
-    
-} */
+
 .product-description {
     margin: 0 0 2rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
 }
 
@@ -271,4 +274,54 @@ button {
 #create-group-form button[type="submit"] {
     width: 100%;
     margin-top: 1rem;
+}
+
+/* footer */
+.site-footer {
+    width: 100%;
+    margin-top: 4rem;
+    padding: 2rem 1rem 1.5rem;
+    border-top: 1px solid var(--color-border, #333);
+    text-align: center;
+}
+
+.footer-brand {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.footer-description {
+    margin: 0.5rem 0 1.25rem;
+    font-size: 0.95rem;
+    opacity: 0.75;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.footer-nav a {
+    color: inherit;
+    font-size: 0.95rem;
+    text-decoration: none;
+    text-underline-offset: 0.25rem;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.footer-nav a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+.footer-copyright {
+    margin: 1.5rem 0 0;
+    font-size: 0.8rem;
+    opacity: 0.6;
 }
