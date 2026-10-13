@@ -65,6 +65,7 @@ if (iosInstallPrompt && dismissIosInstall) {
 }
 
 // Application flow when creating a group !
+// Handle the Create a Group button
 const startGroupButton = document.getElementById("create-a-group");
 startGroupButton.addEventListener("click", async () => {
     // await clearGroups();
@@ -82,6 +83,7 @@ startGroupButton.addEventListener("click", async () => {
         block: "center"
     })
 
+    //  Handle group creation
     const createGroupForm = document.getElementById("create-group-form")
     createGroupForm.addEventListener("submit", async (event) => {
         
@@ -94,7 +96,6 @@ startGroupButton.addEventListener("click", async () => {
 
         const group = createGroup(groupName)
         addMemberToGroup(group, memberName);
-        // const updatedGroup = addMemberToGroup(group, memberName);
         await saveGroup(group);
         window.location.href = "/groups.html";
     })

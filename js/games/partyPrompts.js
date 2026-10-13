@@ -69,15 +69,15 @@ playGameButton.addEventListener("click", showGameSelector);
 function startFriendlyArguments() {
     gameSession.innerHTML = `
         <div class="game-card">
-            <button id="back-to-game" type="button">
-                ← Back to game
+            <button id="back-to-all-games" type="button">
+                ← All games
             </button>
 
             <h2>🗣️ Friendly Arguments</h2>
             <p id="argument-prompt"></p>
 
             <button id="next-argument" type="button">
-                Next
+                 🔄 Get another prompt  
             </button>
         </div>
     `;
@@ -87,7 +87,7 @@ function startFriendlyArguments() {
         .addEventListener("click", showArgument);
 
     document
-        .getElementById("back-to-game")
+        .getElementById("back-to-all-games")
         .addEventListener("click", showGameSelector);
 }
 
@@ -103,13 +103,13 @@ function showArgument() {
 
 function showGameSelector() {
     console.log("showGameSelector called");
-    const existingModal = document.getElementById("game-modal");
+    // const existingModal = document.getElementById("game-modal");
     // If the modal already exists, just show it
-    if (existingModal) {
-        console.log("Game modal already exists, showing it.");
-        existingModal.hidden = false;
-        return;
-    }
+    // if (existingModal) {
+    //     console.log("Game modal already exists, showing it.");
+    //     existingModal.hidden = false;
+    //     return;
+    // }
     const availableGames = games.filter(game => game.enabled);
 
     gameSession.innerHTML = `
@@ -123,7 +123,7 @@ function showGameSelector() {
                     ✕
                 </button>
                 <h2>Choose a game</h2>
-
+                <br>
                 <div id="game-list">
                     ${availableGames.map(game => `
                         <button
@@ -164,6 +164,11 @@ function startGame(gameId) {
             // Implement trivia game start logic here
             break;
     }
+
+    gameSession.scrollIntoView({ 
+        behavior: "smooth",
+        block: "start"
+    });
 }
 
 function closeGameSelector() {
