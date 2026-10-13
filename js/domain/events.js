@@ -56,9 +56,8 @@ export function addMemberToGroup(group, memberName) {
 }
 
 export function startGroup(group) {
-    console.log("Starting group:", group.name);
-    console.log("Members:", group.members);
-    for (const member of group.members) {
-        console.log("Member:", member.name)
+    if (!group) {
+        return;
     }
+    window.location.href = "/groups.html";
 }
