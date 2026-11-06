@@ -9,12 +9,14 @@ export function start({ container, onExit }) {
 
     const stage = document.createElement("div");
     stage.className = "chungi-player-stage";
-    stage.setAttribute("aria-label", "Stick figure movement area");
+    stage.setAttribute("role", "button");
+    stage.setAttribute("tabindex", "0");
+    stage.setAttribute("aria-label", "Stick figure movement area. Tap to kick.");
 
     const stickFigure = document.createElementNS(svgNamespace, "svg");
     stickFigure.setAttribute("viewBox", "0 0 100 140");
     stickFigure.setAttribute("width", "42");
-    stickFigure.setAttribute("height", "45");
+    stickFigure.setAttribute("height", "59");
     stickFigure.setAttribute("role", "img");
     stickFigure.setAttribute("aria-label", "A simple stick figure");
     stickFigure.setAttribute("shape-rendering", "crispEdges");
@@ -25,13 +27,20 @@ export function start({ container, onExit }) {
     head.setAttribute("r", "12");
     head.setAttribute("fill", "none");
 
-    const bodyAndLimbs = document.createElementNS(svgNamespace, "path");
-    bodyAndLimbs.setAttribute(
+    const bodyAndArms = document.createElementNS(svgNamespace, "path");
+    bodyAndArms.setAttribute(
         "d",
-        "M50 34 V82 M50 48 L22 68 M50 48 L78 68 M50 82 L28 116 M50 82 L72 116"
+        "M50 34 V82 M50 48 L22 68 M50 48 L78 68"
     );
 
-    stickFigure.append(head, bodyAndLimbs);
+    const standingLeg = document.createElementNS(svgNamespace, "path");
+    standingLeg.setAttribute("d", "M50 82 L28 116");
+
+    const kickingLeg = document.createElementNS(svgNamespace, "path");
+    kickingLeg.setAttribute("d", "M50 82 L72 116");
+    kickingLeg.classList.add("chungi-kicking-leg");
+
+    stickFigure.append(head, bodyAndArms, standingLeg, kickingLeg);
     stickFigure.setAttribute("fill", "none");
     stickFigure.setAttribute("stroke", "#121412");
     stickFigure.setAttribute("stroke-width", "10");
@@ -53,6 +62,13 @@ export function start({ container, onExit }) {
 
     game.append(stage, status, exitButton);
     container.replaceChildren(game);
+
+    stage.addEventListener("click", kick, { signal: controller.signal });
+    stage.addEventListener("keydown", event => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        kick();
+    }, { signal: controller.signal });
 
     startTilt();
 
@@ -92,11 +108,17 @@ export function start({ container, onExit }) {
 
         if (centerGamma === null) {
             centerGamma = currentGamma;
-            status.textContent = "Centered. Tilt left and right to move the sprite.";
+            status.textContent = "Centered. Tilt to move; tap the play area to kick.";
         }
 
         const maxOffset = Math.max(0, (stage.clientWidth - stickFigure.width.baseVal.value) / 2);
         const offset = Math.max(-maxOffset, Math.min(maxOffset, (currentGamma - centerGamma) * 2.5));
         stickFigure.style.setProperty("--chungi-offset", `${offset}px`);
+    }
+
+    function kick() {
+        stickFigure.classList.remove("is-kicking");
+        void stickFigure.getBoundingClientRect();
+        stickFigure.classList.add("is-kicking");
     }
 }

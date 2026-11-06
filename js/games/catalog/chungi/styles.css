@@ -36,6 +36,8 @@
     border-bottom: 2px solid #71866b;
     background: linear-gradient(#c7e4ee, #e9f0e5);
     overflow: hidden;
+    cursor: pointer;
+    touch-action: manipulation;
 }
 
 .chungi-player {
@@ -48,3 +50,17 @@
 .chungi-tilt-status { flex: 0 0 auto; min-height: 1.3em; margin: 10px 0 0; color: var(--color-muted, #a5a8b8); font-size: .84rem; text-align: center; }
 .chungi-game .chungi-exit { flex: 0 0 auto; margin-top: 12px; }
 .chungi-game button:focus-visible { outline: 2px solid #a78bfa; outline-offset: 3px; }
+
+.chungi-kicking-leg {
+    transform-box: view-box;
+    transform-origin: 50px 82px;
+}
+
+.chungi-player.is-kicking .chungi-kicking-leg {
+    animation: chungi-kick 300ms ease-out;
+}
+
+@keyframes chungi-kick {
+    40% { transform: rotate(-55deg); }
+    100% { transform: rotate(0); }
+}
