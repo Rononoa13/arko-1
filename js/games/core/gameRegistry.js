@@ -44,7 +44,7 @@ const games = [
         id: "chungi",
         name: "Chungi",
         description: "Cungi comming soon.",
-        icon: "🪀",
+        icon: "/js/games/catalog/chungi/chungi.svg",
         category: "dexterity",
         mode: "solo",
         minPlayers: 1,

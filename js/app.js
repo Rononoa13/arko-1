@@ -68,14 +68,20 @@ function renderFeaturedSoloGames() {
         return;
     }
 
-    gameContainer.innerHTML = soloGames.map(game => `
-        <article class="featured-game-card">
-            <span aria-hidden="true">${game.icon}</span>
-            <h3>${game.name}</h3>
-            <p>${game.description}</p>
-            <button type="button" data-game-id="${game.id}">Play</button>
-        </article>
-    `).join("");
+    gameContainer.innerHTML = soloGames.map(game => {
+        const iconMarkup = game.icon.endsWith(".svg")
+            ? `<img class="featured-game-icon" src="${game.icon}" alt="">`
+            : `<span aria-hidden="true">${game.icon}</span>`;
+
+        return `
+            <article class="featured-game-card">
+                ${iconMarkup}
+                <h3>${game.name}</h3>
+                <p>${game.description}</p>
+                <button type="button" data-game-id="${game.id}">Play</button>
+            </article>
+        `;
+    }).join("");
 }
 
 // iOS PWA install prompt
