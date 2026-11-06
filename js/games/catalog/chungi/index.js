@@ -5,7 +5,7 @@ export function start({ container, onExit }) {
     let centerGamma = null;
 
     const game = document.createElement("div");
-    game.className = "chungi-game";
+    game.className = "game-card chungi-game";
 
     const stage = document.createElement("div");
     stage.className = "chungi-player-stage";
