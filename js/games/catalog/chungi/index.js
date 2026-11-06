@@ -13,7 +13,7 @@ export function start({ container, onExit }) {
 
     const stickFigure = document.createElementNS(svgNamespace, "svg");
     stickFigure.setAttribute("viewBox", "0 0 100 140");
-    stickFigure.setAttribute("width", "32");
+    stickFigure.setAttribute("width", "42");
     stickFigure.setAttribute("height", "45");
     stickFigure.setAttribute("role", "img");
     stickFigure.setAttribute("aria-label", "A simple stick figure");
@@ -33,27 +33,17 @@ export function start({ container, onExit }) {
 
     stickFigure.append(head, bodyAndLimbs);
     stickFigure.setAttribute("fill", "none");
-    stickFigure.setAttribute("stroke", "currentColor");
+    stickFigure.setAttribute("stroke", "#121412");
     stickFigure.setAttribute("stroke-width", "10");
     stickFigure.setAttribute("stroke-linecap", "square");
     stickFigure.setAttribute("stroke-linejoin", "miter");
     stickFigure.classList.add("chungi-player");
     stage.append(stickFigure);
 
-    const controls = document.createElement("div");
-    controls.className = "chungi-tilt-controls";
-
-    const calibrateButton = document.createElement("button");
-    calibrateButton.type = "button";
-    calibrateButton.textContent = "Calibrate center";
-    calibrateButton.disabled = true;
-
     const status = document.createElement("p");
     status.className = "chungi-tilt-status";
     status.setAttribute("aria-live", "polite");
     status.textContent = "Starting centered. Tilt your phone left or right to move.";
-
-    controls.append(calibrateButton);
 
     const exitButton = document.createElement("button");
     exitButton.type = "button";
@@ -61,10 +51,9 @@ export function start({ container, onExit }) {
     exitButton.textContent = "← Back to games";
     exitButton.addEventListener("click", onExit, { signal: controller.signal });
 
-    game.append(stage, controls, status, exitButton);
+    game.append(stage, status, exitButton);
     container.replaceChildren(game);
 
-    calibrateButton.addEventListener("click", calibrate, { signal: controller.signal });
     startTilt();
 
     return {
@@ -103,19 +92,11 @@ export function start({ container, onExit }) {
 
         if (centerGamma === null) {
             centerGamma = currentGamma;
-            calibrateButton.disabled = false;
             status.textContent = "Centered. Tilt left and right to move the sprite.";
         }
 
         const maxOffset = Math.max(0, (stage.clientWidth - stickFigure.width.baseVal.value) / 2);
-        const offset = Math.max(-maxOffset, Math.min(maxOffset, (currentGamma - centerGamma) * 5));
+        const offset = Math.max(-maxOffset, Math.min(maxOffset, (currentGamma - centerGamma) * 2.5));
         stickFigure.style.setProperty("--chungi-offset", `${offset}px`);
-    }
-
-    function calibrate() {
-        if (currentGamma === null) return;
-        centerGamma = currentGamma;
-        stickFigure.style.setProperty("--chungi-offset", "0px");
-        status.textContent = "Calibrated. Tilt left and right to move the sprite.";
     }
 }
