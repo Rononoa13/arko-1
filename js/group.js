@@ -113,7 +113,7 @@ removeGroup.addEventListener("click", async () => {
         return;
     }
     await deleteGroup(group.id);
-    window.location.replace("/");
+    window.location.replace("index.html");
 });
 
 function getMemberBeerCount(events, groupId, memberId) {

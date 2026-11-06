@@ -59,5 +59,5 @@ export function startGroup(group) {
     if (!group) {
         return;
     }
-    window.location.href = "/groups.html";
+    window.location.href = "groups.html";
 }

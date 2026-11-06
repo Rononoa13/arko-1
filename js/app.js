@@ -138,6 +138,6 @@ startGroupButton.addEventListener("click", async () => {
         const group = createGroup(groupName)
         addMemberToGroup(group, memberName);
         await saveGroup(group);
-        window.location.href = "/groups.html";
+        window.location.href = "groups.html";
     })
 })

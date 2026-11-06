@@ -1,27 +1,32 @@
-const CACHE_NAME = "arko-1-v2";
+const CACHE_NAME = "arko-1-v3";
 
 const APP_ASSETS = [
-    "/",
-    "/index.html",
-    "/css/app.css",
-    "/js/app.js",
-
-    "/js/storage/eventStore.js",
-    "/js/domain/events.js",
-    "/js/domain/drinkSummary.js",
-    "/js/ui/appView.js",
-    "/css/games/games.css",
-    "/js/games/core/gameRegistry.js",
-    "/js/games/core/gameEngine.js",
-    "/js/games/catalog/friendlyArguments/index.js",
-    "/js/games/catalog/friendlyArguments/data.js",
-    "/js/games/catalog/nepalTrivia/index.js",
-    "/js/games/catalog/nepalTrivia/data.js",
-
-    "/manifest.json",
-    "/icons/icon-192.png",
-    "/icons/icon-512.png"
-];
+    "",
+    "index.html",
+    "groups.html",
+    "about.html",
+    "css/app.css",
+    "css/group.css",
+    "css/about.css",
+    "css/games/games.css",
+    "js/app.js",
+    "js/group.js",
+    "js/games/partyPrompts.js",
+    "js/storage/eventStore.js",
+    "js/domain/events.js",
+    "js/domain/drinkSummary.js",
+    "js/ui/appView.js",
+    "js/games/core/gameRegistry.js",
+    "js/games/core/gameEngine.js",
+    "js/games/catalog/friendlyArguments/index.js",
+    "js/games/catalog/friendlyArguments/data.js",
+    "js/games/catalog/nepalTrivia/index.js",
+    "js/games/catalog/nepalTrivia/data.js",
+    "manifest.json",
+    "icons/icon-192.png",
+    "icons/icon-512.png",
+    "icons/icon-512-maskable.png"
+].map(path => new URL(path, self.registration.scope).href);
 
 self.addEventListener("install", (event) => {
     event.waitUntil(
