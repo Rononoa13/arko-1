@@ -43,7 +43,7 @@ const games = [
     {
         id: "chungi",
         name: "Chungi",
-        description: "Cungi comming soon.",
+        description: "A simple foot-kicking dexterity game.",
         icon: "/js/games/catalog/chungi/chungi.svg",
         category: "dexterity",
         mode: "solo",

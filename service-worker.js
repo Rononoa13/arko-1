@@ -1,4 +1,4 @@
-const CACHE_NAME = "arko-1-v3";
+const CACHE_NAME = "arko-1-v4";
 
 const APP_ASSETS = [
     "",
@@ -22,6 +22,9 @@ const APP_ASSETS = [
     "js/games/catalog/friendlyArguments/data.js",
     "js/games/catalog/nepalTrivia/index.js",
     "js/games/catalog/nepalTrivia/data.js",
+    "js/games/catalog/chungi/index.js",
+    "js/games/catalog/chungi/styles.css",
+    "js/games/catalog/chungi/chungi.svg",
     "manifest.json",
     "icons/icon-192.png",
     "icons/icon-512.png",

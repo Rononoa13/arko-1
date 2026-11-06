@@ -47,10 +47,15 @@ if (gameContainer) {
         const gameButton = event.target.closest("[data-game-id]");
         if (!gameButton) return;
 
-        startGame(gameButton.dataset.gameId, gameContainer, {
-            onExit: renderFeaturedSoloGames
-        });
-        gameContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+        try {
+            startGame(gameButton.dataset.gameId, gameContainer, {
+                onExit: renderFeaturedSoloGames
+            });
+            gameContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+        } catch (error) {
+            console.error("Could not start the selected game:", error);
+            gameContainer.textContent = `Could not start the game: ${error.message}`;
+        }
     });
 }
 
