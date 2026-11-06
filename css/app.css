@@ -52,7 +52,7 @@ h1 {
 }
 
 .product-description {
-    margin: 0 0 2rem;
+    margin: 0 0 1rem;
     font-size: 1.2rem;
     text-align: center;
 }
@@ -60,11 +60,11 @@ h1 {
 #drink-counts {
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-bottom: 0.75rem;
 }
 
 #drink-actions {
-    margin-top: 8vh;
+    margin-top: 0;
     display: flex;
     justify-content: center;
 }
@@ -198,6 +198,26 @@ button {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+}
+
+#featured-games {
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.featured-games-heading {
+    margin-bottom: 1rem;
+}
+
+.featured-games-heading h2 {
+    margin: 0;
+    font-size: 1.35rem;
+}
+
+.featured-games-heading p {
+    margin: 0.35rem 0 0;
+    color: #aaa;
+    font-size: 0.95rem;
 }
 
 #create-a-group {
