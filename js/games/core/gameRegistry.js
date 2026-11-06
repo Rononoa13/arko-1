@@ -4,10 +4,13 @@
         * Which games exist?
         * What are their IDs?
         * What information should the selection screen display?
+    
+    lists games and their metadata. 
+    A game marked mode: "solo" is eligible for the Featured Solo Games section.
  */
 
 import * as friendlyArguments from "../catalog/friendlyArguments/index.js";
-
+import * as nepalTrivia from "../catalog/nepalTrivia/index.js";
 
 const games = [
     {
@@ -22,6 +25,19 @@ const games = [
         requiresGroup: true,
         enabled: true,
         implementation: friendlyArguments
+    },
+    {
+        id: "nepal-trivia",
+        name: "Nepal Trivia",
+        description: "Test your knowledge of Nepal.",
+        icon: "🇳🇵",
+        category: "education",
+        mode: "solo",
+        minPlayers: 1,
+        maxPlayers: 1,
+        requiresGroup: false,
+        enabled: true,
+        implementation: nepalTrivia
     }
 ];
 

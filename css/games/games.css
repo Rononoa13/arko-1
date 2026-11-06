@@ -227,6 +227,61 @@
     filter: brightness(1.08);
 }
 
+.game-card button + button {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--color-muted);
+    font: inherit;
+    cursor: pointer;
+}
+
+.game-card button + button:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+}
+
+.game-card .answer-button {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--color-muted);
+    font: inherit;
+    cursor: pointer;
+}
+
+.game-card .answer-button:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+}
+
+.game-card .answer-button:disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.game-card .trivia-exit-button {
+    display: block;
+    width: auto;
+    margin: 24px auto 0;
+    padding: 8px 12px;
+    border: 0;
+    background: transparent;
+    color: var(--color-muted);
+    font: inherit;
+    cursor: pointer;
+}
+
+.game-card .trivia-exit-button:hover {
+    color: var(--color-text);
+    text-decoration: underline;
+}
 /* Entrance animation */
 
 @keyframes modal-enter {
