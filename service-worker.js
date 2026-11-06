@@ -10,6 +10,13 @@ const APP_ASSETS = [
     "/js/domain/events.js",
     "/js/domain/drinkSummary.js",
     "/js/ui/appView.js",
+    "/css/games/games.css",
+    "/js/games/core/gameRegistry.js",
+    "/js/games/core/gameEngine.js",
+    "/js/games/catalog/friendlyArguments/index.js",
+    "/js/games/catalog/friendlyArguments/data.js",
+    "/js/games/catalog/nepalTrivia/index.js",
+    "/js/games/catalog/nepalTrivia/data.js",
 
     "/manifest.json",
     "/icons/icon-192.png",
