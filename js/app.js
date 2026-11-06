@@ -2,6 +2,8 @@ import { saveEvent, getAllEvents, clearEvents, getExistingGroup, saveGroup, clea
 import { createDrinkConsumedEvent, createGroup, addMemberToGroup, startGroup } from "./domain/events.js";
 import { countDrinks } from "./domain/drinkSummary.js";
 import { renderDrinkCounts } from "./ui/appView.js";
+import { startGame } from "./games/core/gameEngine.js";
+import { getGamesByMode } from "./games/core/gameRegistry.js";
 
 
 async function render() {
@@ -36,6 +38,45 @@ resetEventsButton.addEventListener("click", async () => {
 });
 
 await render(); // Initial render on page load
+
+const gameContainer = document.getElementById("game-container");
+
+if (gameContainer) {
+    renderFeaturedSoloGames();
+    gameContainer.addEventListener("click", (event) => {
+        const gameButton = event.target.closest("[data-game-id]");
+        if (!gameButton) return;
+
+        startGame(gameButton.dataset.gameId, gameContainer, {
+            onExit: renderFeaturedSoloGames
+        });
+        gameContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+}
+
+function renderFeaturedSoloGames() {
+    const soloGames = getGamesByMode("solo");
+
+    if (soloGames.length === 0) {
+        gameContainer.innerHTML = `
+            <article class="featured-game-card coming-soon">
+                <span aria-hidden="true">🎮</span>
+                <h3>Your first solo game is coming soon</h3>
+                <p>Solo games you add to the registry will appear here.</p>
+            </article>
+        `;
+        return;
+    }
+
+    gameContainer.innerHTML = soloGames.map(game => `
+        <article class="featured-game-card">
+            <span aria-hidden="true">${game.icon}</span>
+            <h3>${game.name}</h3>
+            <p>${game.description}</p>
+            <button type="button" data-game-id="${game.id}">Play</button>
+        </article>
+    `).join("");
+}
 
 // iOS PWA install prompt
 const iosInstallPrompt = document.querySelector("#install-ios");
