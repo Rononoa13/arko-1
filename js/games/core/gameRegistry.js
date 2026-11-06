@@ -11,6 +11,7 @@
 
 import * as friendlyArguments from "../catalog/friendlyArguments/index.js";
 import * as nepalTrivia from "../catalog/nepalTrivia/index.js";
+import * as chungi from "../catalog/chungi/index.js";
 
 const games = [
     {
@@ -38,6 +39,19 @@ const games = [
         requiresGroup: false,
         enabled: true,
         implementation: nepalTrivia
+    },
+    {
+        id: "chungi",
+        name: "Chungi",
+        description: "Cungi comming soon.",
+        icon: "🪀",
+        category: "dexterity",
+        mode: "solo",
+        minPlayers: 1,
+        maxPlayers: 1,
+        requiresGroup: false,
+        enabled: true,
+        implementation: chungi
     }
 ];
 
